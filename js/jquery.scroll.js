@@ -52,10 +52,10 @@
 						
 			// Eventos 
 			init			: function(){ },
-			onTop   		: function(){ },
-			onBottom   		: function(){ },
+			onScrollTop   	: function(){ },
+			onScrollEnd   	: function(){ },
 			onUpdate   		: function(){ },
-			onScroll		: function(){ },
+			onScrolling		: function(){ },
 			
 			// Variables 
 			prop			: { }
@@ -444,7 +444,7 @@
 				posicion_final = total > 0 ? settings.wheel*-1 : total;
 				
 				// Llamar funcion
-				_call( "onScroll", evt );
+				_call( "onScrolling", evt );
 				
 				// Mover contenedor					
 				return moveto = _moveTo( posicion_final * -1, undefined, evt );
@@ -658,13 +658,13 @@
 				// El scroll ha llegado al inicio 
 				if( ( settings.distance * factor ) > move_to ){
 					// Funcion de ontop
-					moveto._function = "onTop";
+					moveto._function = "onScrollTop";
 					ctrl_bottom = false;
 					
 				// El scroll ha llegado al final 
 				} else if( move_to >= ( limit_wrap - ( settings.distance * factor ) ) ){
-					// Llamar funcion de onBottom 
-					moveto._function = "onBottom";
+					// Llamar funcion de onScrollEnd 
+					moveto._function = "onScrollEnd";
 					ctrl_top = false;
 						
 				} else {
@@ -695,11 +695,11 @@
 					animacion_scroll( moveto.warp, moveto.barra, "", ondrag );
 					
 					// Llamar eventos 	
-					if( moveto._function == "onTop" && ctrl_top == false ){
+					if( moveto._function == "onScrollTop" && ctrl_top == false ){
 						_call( moveto._function );
 						ctrl_top = true;
 						 
-					} else if( moveto._function == "onBottom" && ctrl_bottom == false ){
+					} else if( moveto._function == "onScrollEnd" && ctrl_bottom == false ){
 						_call( moveto._function );
 						ctrl_bottom = true;						
 					}
@@ -802,17 +802,17 @@
 						
 					break;
 					// Funcion al subir el scroll
-					case "onTop" :
+					case "onScrollTop" :
 						// Comprobar si es una funcion 
-						if( $.isFunction( settings.onTop ) && ctrl_top == false )
-						   setTimeout( function(){ settings.onTop.apply( self, variables ); }, duracion ); ctrl_top = true;
+						if( $.isFunction( settings.onScrollTop ) && ctrl_top == false )
+						   setTimeout( function(){ settings.onScrollTop.apply( self, variables ); }, duracion ); ctrl_top = true;
 						   
 					break;
 					// Funcion al bajar el scroll
-					case "onBottom" :
+					case "onScrollEnd" :
 						// Comprobar si es una funcion 
-						if( $.isFunction( settings.onBottom ) && ctrl_bottom == false )
-						   setTimeout( function(){ settings.onBottom.apply( self, variables ); }, duracion ); ctrl_bottom = true;
+						if( $.isFunction( settings.onScrollEnd ) && ctrl_bottom == false )
+						   setTimeout( function(){ settings.onScrollEnd.apply( self, variables ); }, duracion ); ctrl_bottom = true;
 						   
 					break;
 					// Funcion al actualizarse el plugin
@@ -823,13 +823,13 @@
 						   
 					break;
 					// evt mousewhell.
-					case "onScroll" :
+					case "onScrolling" :
 						// Comprobar si es una funcion 
-						if( $.isFunction( settings.onScroll ) ){
+						if( $.isFunction( settings.onScrolling ) ){
 							// Agregar evento
 							variables.unshift( evt );							
 							// Llamar funcion
-							settings.onScroll.apply( self, variables );
+							settings.onScrolling.apply( self, variables );
 						}
 												
 					break;

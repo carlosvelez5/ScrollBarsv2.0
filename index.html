@@ -122,14 +122,14 @@ $( window ).load( function() {
 		animate:false, usetransition : false,
 		
 		// Funcion al subir el scroll
-		onTop : debug,/* debug : true,*/
+		onScrollTop : debug,/* debug : true,*/
 		
 		// Tamaño de la barra
 		bar_size : 200,
 		positionDanguer: "inherit",
 		
 		//clase_contenido : ".content_html",
-		onBottom : function( wraps, settings, call_fun ){
+		onScrollEnd : function( wraps, settings, call_fun ){
 			// Contenedor
 			var selector = this.selector;
 			
