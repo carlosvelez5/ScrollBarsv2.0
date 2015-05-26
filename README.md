@@ -20,7 +20,7 @@ Incluya este script después de jQuery.
 ```
 ``` javascript
 <script>
-  $("#scroll").scroll_bars({
+  $("#scroll").scrollbars({
   	// No animar scroll
 		animate:false,
 		// No ocultar barra
@@ -33,7 +33,7 @@ Incluya este script después de jQuery.
 
 ``` javascript
 // Crear scrollbars.
-  $("#scroll").scroll_bars({
+  $("#scroll").scrollbars({
 		// Distancia a bajar cada vez que se ejecuta la funcion mousewhell
 		wheel : 120,
 		// Velocidad de la animacion
@@ -47,8 +47,43 @@ Incluya este script después de jQuery.
 		/*easing : 'easeOutQuart' //easeOutCirc'*/
 
 	// Mover scroll al 50%
-  }).trigger('scroll_goto', [ "50%" ] );
+  }).trigger( 'goto', [ "50%" ] );
+  
+  // Esto es equivalente
+  //$("#scroll").scrollbars( "goto", "50%" );
+  
+  /* Actualizar scroll
+  $("#scroll").scrollbars( "update" );
+  
+  // Destruir
+  $("#scroll").scrollbars( "destroy" );
+  
+  // Llevar contenido arriba
+  $("#scroll").scrollbars( "gototop" );
+  
+  // Llevar contenido abajo 
+  $("#scroll").scrollbars( "gotobottom" );
+  
+  */
 ```
+
+## Callbacks
+```javascript
+	// Crear scrollbars.
+	$("#scroll").scrollbars({ // Eventos 
+		init			: function(){ },
+		
+		// Llamada cuando el scroll llega al inicio
+		onScrollTop   	: function(){ },
+		// Llamada cuando el scroll llega al final
+		onScrollEnd   	: function(){ },
+		// Cuando se actualiza el scroll
+		onUpdate   		: function(){ },
+		// Evento mousewheel
+		onScrolling		: function(){ },
+	});
+```
+
 
 ## Depends
 
