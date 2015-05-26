@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Scrollbarsv2.0 : Scrollbar´s puede utilizarse para el desplazamiento del contenido. Fue construido usando la biblioteca jQuery javascript, fue diseñado para ser una utilidad dinámica y ligera que da a los diseñadores web una manera potente de la mejora la interfaz del usuario en sus sitios web.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Scrollbarsv2.0</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/carlosvelez5/ScrollBarsv2.0">View on GitHub</a>
+
+          <h1 id="project_title">Scrollbarsv2.0</h1>
+          <h2 id="project_tagline">Scrollbar´s puede utilizarse para el desplazamiento del contenido. Fue construido usando la biblioteca jQuery javascript, fue diseñado para ser una utilidad dinámica y ligera que da a los diseñadores web una manera potente de la mejora la interfaz del usuario en sus sitios web.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/carlosvelez5/ScrollBarsv2.0/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/carlosvelez5/ScrollBarsv2.0/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="jqueryscrollbars" class="anchor" href="#jqueryscrollbars" aria-hidden="true"><span class="octicon octicon-link"></span></a>jQuery.Scrollbar´s</h1>
+
+<h3>
+<a id="jquery-plugin" class="anchor" href="#jquery-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>jQuery Plugin</h3>
+
+<p>Scrollbar´s puede utilizarse para el desplazamiento del contenido.
+Fue construido usando la biblioteca jQuery javascript,
+fue diseñado para ser una utilidad dinámica y ligera que da a los diseñadores web una manera
+potente de la mejora la  interfaz del usuario en sus sitios web.</p>
+
+<p>El propósito de este plugin es añadir una barra de desplazamiento para el elemento de su elección,
+para ver cualquier contenido que sea más grande que el tamaño visible,
+espacio de un div por ejemplo. Está dirigido a las personas que no quieren un defecto
+de desplazamiento y que tienen muy poco conocimiento de esta librería.</p>
+
+<h2>
+<a id="forma-de-uso" class="anchor" href="#forma-de-uso" aria-hidden="true"><span class="octicon octicon-link"></span></a>Forma de uso</h2>
+
+<p>Incluya este script después de jQuery.</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">'</span>jquery.min.js<span class="pl-pds">'</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/jquery.scroll.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">&lt;</span>script<span class="pl-k">&gt;</span>
+  $(<span class="pl-s"><span class="pl-pds">"</span>#scroll<span class="pl-pds">"</span></span>).<span class="pl-c1">scrollbars</span>({
+    <span class="pl-c">// No animar scroll</span>
+        animate<span class="pl-k">:</span><span class="pl-c1">false</span>,
+        <span class="pl-c">// No ocultar barra</span>
+        hide<span class="pl-k">:</span> <span class="pl-c1">false</span>
+    })
+<span class="pl-k">&lt;</span>/script<span class="pl-k">&gt;</span></pre></div>
+
+<h2>
+<a id="ejemplo" class="anchor" href="#ejemplo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ejemplo</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// Crear scrollbars.</span>
+  $(<span class="pl-s"><span class="pl-pds">"</span>#scroll<span class="pl-pds">"</span></span>).<span class="pl-c1">scrollbars</span>({
+        <span class="pl-c">// Distancia a bajar cada vez que se ejecuta la funcion mousewhell</span>
+        wheel <span class="pl-k">:</span> <span class="pl-c1">120</span>,
+        <span class="pl-c">// Velocidad de la animacion</span>
+        speed<span class="pl-k">:</span> <span class="pl-c1">550</span>, 
+        <span class="pl-c">// Tamaño de la barra</span>
+        bar_size <span class="pl-k">:</span> <span class="pl-c1">207</span>,
+        <span class="pl-c">// Mostrar msgs</span>
+        debug <span class="pl-k">:</span> <span class="pl-c1">true</span>,
+        <span class="pl-c">// Ocultar barra</span>
+        hide<span class="pl-k">:</span> <span class="pl-c1">true</span>
+        <span class="pl-c">/*easing : 'easeOutQuart' //easeOutCirc'*/</span>
+
+    <span class="pl-c">// Mover scroll al 50%</span>
+  }).trigger( <span class="pl-s"><span class="pl-pds">'</span>goto<span class="pl-pds">'</span></span>, [ <span class="pl-s"><span class="pl-pds">"</span>50%<span class="pl-pds">"</span></span> ] );
+
+  <span class="pl-c">// Esto es equivalente</span>
+  <span class="pl-c">//$("#scroll").scrollbars( "goto", "50%" );</span>
+
+  <span class="pl-c">/* Actualizar scroll</span>
+<span class="pl-c">  $("#scroll").scrollbars( "update" );</span>
+<span class="pl-c"></span>
+<span class="pl-c">  // Destruir</span>
+<span class="pl-c">  $("#scroll").scrollbars( "destroy" );</span>
+<span class="pl-c"></span>
+<span class="pl-c">  // Llevar contenido arriba</span>
+<span class="pl-c">  $("#scroll").scrollbars( "gototop" );</span>
+<span class="pl-c"></span>
+<span class="pl-c">  // Llevar contenido abajo </span>
+<span class="pl-c">  $("#scroll").scrollbars( "gotobottom" );</span>
+<span class="pl-c"></span>
+<span class="pl-c">  */</span></pre></div>
+
+<h2>
+<a id="callbacks" class="anchor" href="#callbacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callbacks</h2>
+
+<div class="highlight highlight-javascript"><pre>    <span class="pl-c">// Crear scrollbars.</span>
+    $(<span class="pl-s"><span class="pl-pds">"</span>#scroll<span class="pl-pds">"</span></span>).<span class="pl-c1">scrollbars</span>({ <span class="pl-c">// Eventos </span>
+        <span class="pl-en">init</span>            : <span class="pl-k">function</span>(){ },
+
+        <span class="pl-c">// Llamada cuando el scroll llega al inicio</span>
+        <span class="pl-en">onScrollTop</span>     : <span class="pl-k">function</span>(){ },
+        <span class="pl-c">// Llamada cuando el scroll llega al final</span>
+        <span class="pl-en">onScrollEnd</span>     : <span class="pl-k">function</span>(){ },
+        <span class="pl-c">// Cuando se actualiza el scroll</span>
+        <span class="pl-en">onUpdate</span>        : <span class="pl-k">function</span>(){ },
+        <span class="pl-c">// Evento mousewheel</span>
+        <span class="pl-en">onScrolling</span>     : <span class="pl-k">function</span>(){ },
+    });</pre></div>
+
+<h2>
+<a id="depends" class="anchor" href="#depends" aria-hidden="true"><span class="octicon octicon-link"></span></a>Depends</h2>
+
+<ul>
+<li>jQuery &gt;=1.4.2</li>
+</ul>
+
+<h2>
+<a id="licencia" class="anchor" href="#licencia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licencia</h2>
+
+<p>Copyright(c) 2013 CREACIÓN WEB AMALFI
+Licensed under the MIT license.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Scrollbarsv2.0 maintained by <a href="https://github.com/carlosvelez5">carlosvelez5</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
